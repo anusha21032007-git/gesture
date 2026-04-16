@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Wand | Hand Tracking UI</title>
+    <meta name="description" content="A premium hand-tracking interactive experience using MediaPipe and Canvas sparkles.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MediaPipe Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <p id="loader-text">Loading Neural Networks...</p>
+        <div id="start-prompt">
+            <p>Ready to magic?</p>
+            <button class="btn-primary" id="start-btn">Initialize Camera</button>
+        </div>
+    </div>
+
+    <div id="app-container">
+        <!-- Main Particle Canvas -->
+        <canvas id="particle-canvas"></canvas>
+
+        <!-- UI Overlay -->
+        <div class="ui-layer">
+            <header class="header">
+                <div class="title-group">
+                    <h1>Magic Wand</h1>
+                    <p>Real-time Hand Interaction</p>
+                </div>
+                <div class="status-badge">
+                    <div class="status-dot" id="status-dot"></div>
+                    <span id="status-text">Disconnected</span>
+                </div>
+            </header>
+
+            <div class="instructions">
+                <h3>Controls</h3>
+                <ul>
+                    <li>Point index finger to move</li>
+                    <li>Pinch thumb & index to click</li>
+                    <li>Move fast for more sparkles</li>
+                </ul>
+            </div>
+
+            <div class="camera-preview">
+                <video id="video-element" playsinline></video>
+                <canvas id="guide-canvas" style="position: absolute; top: 0; left: 0; transform: scaleX(1);"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
